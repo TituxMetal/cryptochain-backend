@@ -1,0 +1,14 @@
+{
+  "name": "cryptochain-backend",
+  "description": "Cryptochain backend",
+  "version": "1.0.0",
+  "main": "scr/index.js",
+  "author": "Titux Metal <github@lgdweb.fr>",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest --watchAll"
+  },
+  "devDependencies": {
+    "jest": "^25.1.0"
+  }
+}
