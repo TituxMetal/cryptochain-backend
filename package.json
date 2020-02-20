@@ -9,9 +9,11 @@
     "test": "jest --watchAll"
   },
   "devDependencies": {
-    "jest": "^25.1.0"
+    "jest": "^25.1.0",
+    "nodemon": "^2.0.2"
   },
   "dependencies": {
+    "express": "^4.17.1",
     "hex-to-binary": "^1.0.1"
   }
 }
