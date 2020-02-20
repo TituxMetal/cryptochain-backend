@@ -6,9 +6,12 @@
   "author": "Titux Metal <github@lgdweb.fr>",
   "license": "MIT",
   "scripts": {
-    "test": "jest --watchAll"
+    "test": "jest --watchAll",
+    "start": "node ./src/index.js",
+    "dev": "env-cmd -f .env nodemon ./src/index.js"
   },
   "devDependencies": {
+    "env-cmd": "^10.1.0",
     "jest": "^25.1.0",
     "nodemon": "^2.0.2"
   },
