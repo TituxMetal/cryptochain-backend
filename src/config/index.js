@@ -1,7 +1,14 @@
 const MINE_RATE = 1000
 const INITIAL_DIFFICULTY = 3
 
-const port = process.env.PORT || 3000
+const defaultPort = process.env.PORT || 3000
+let peerPort
+
+if (process.env.GENERATE_PEER_PORT === 'true') {
+  peerPort = parseInt(defaultPort) + Math.ceil(Math.random() * 1000)
+}
+
+const port = peerPort || defaultPort
 
 const GENESIS_DATA = {
   timestamp: 1,
