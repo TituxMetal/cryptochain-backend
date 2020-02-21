@@ -21,6 +21,7 @@ app.post('/api/mine', (req, res) => {
   const { data } = req.body
 
   blockchain.addBlock({ data })
+  pubsub.broadcastChain()
 
   res.redirect('/api/blocks')
 })
