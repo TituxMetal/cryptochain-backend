@@ -9,6 +9,7 @@ if (process.env.GENERATE_PEER_PORT === 'true') {
 }
 
 const port = peerPort || defaultPort
+const rootNodeAddress = `${process.env.ROOT_NODE_ADDRESS}:${defaultPort}`
 
 const GENESIS_DATA = {
   timestamp: 1,
@@ -19,4 +20,4 @@ const GENESIS_DATA = {
   data: []
 }
 
-module.exports = { GENESIS_DATA, MINE_RATE, port }
+module.exports = { GENESIS_DATA, MINE_RATE, port, rootNodeAddress }
