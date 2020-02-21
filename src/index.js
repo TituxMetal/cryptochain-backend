@@ -10,8 +10,6 @@ const app = express()
 const blockchain = new Blockchain()
 const pubsub = new PubSub({ blockchain })
 
-setTimeout(() => pubsub.broadcastChain(), 1000)
-
 app.use(bodyParser.json({ extended: true }))
 
 app.get('/api/blocks', (_req, res) => {
@@ -41,5 +39,7 @@ const syncChains = () => {
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`)
 
-  syncChains()
+  if (port !== process.env.PORT) {
+    syncChains()
+  }
 })
