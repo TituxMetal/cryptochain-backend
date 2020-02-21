@@ -1,8 +1,9 @@
 const bodyParser = require('body-parser')
 const express = require('express')
+const request = require('request')
 
 const { Blockchain } = require('./blockchain')
-const { port } = require('./config')
+const { port, rootNodeAddress } = require('./config')
 const PubSub = require('./PubSub')
 
 const app = express()
@@ -26,4 +27,19 @@ app.post('/api/mine', (req, res) => {
   res.redirect('/api/blocks')
 })
 
-app.listen(port, () => console.log(`Server is running on port ${port}`))
+const syncChains = () => {
+  request({ url: `${rootNodeAddress}/api/blocks` }, (error, response, body) => {
+    if (!error && response.statusCode === 200) {
+      const rootChain = JSON.parse(body)
+
+      console.log('replace chain on a sync with: ', rootChain)
+      blockchain.replaceChain(rootChain)
+    }
+  })
+}
+
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`)
+
+  syncChains()
+})
