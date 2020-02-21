@@ -3,9 +3,13 @@ const express = require('express')
 
 const { Blockchain } = require('./blockchain')
 const { port } = require('./config')
+const PubSub = require('./PubSub')
 
 const app = express()
 const blockchain = new Blockchain()
+const pubsub = new PubSub({ blockchain })
+
+setTimeout(() => pubsub.broadcastChain(), 1000)
 
 app.use(bodyParser.json({ extended: true }))
 
