@@ -1,4 +1,4 @@
 const cryptoHash = require('./cryptoHash')
-const { ec } = require('./ec')
+const { ec, verifySignature } = require('./ec')
 
-module.exports = { cryptoHash, ec }
+module.exports = { cryptoHash, ec, verifySignature }
